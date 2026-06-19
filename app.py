@@ -1,8 +1,6 @@
 from playwright.sync_api import sync_playwright, TimeoutError
 from flask import Flask, render_template, request, jsonify
 
-#現在の年月日取得
-
 def get_shift_data(login_ID, login_PASS, target_year, target_month):
     #現在の年月日取得
     def get_year_month(page):
@@ -26,7 +24,6 @@ def get_shift_data(login_ID, login_PASS, target_year, target_month):
 
         page.goto("URL")
         
-        #検索したい年,月
         month = {'1':31, '2':28, '3':31, '4':30, '5':31, '6':30, '7':31, '8':31, '9':30, '10':31, '11':30, '12':31}
         
         #**********************************期間開始**********************************#
@@ -40,9 +37,6 @@ def get_shift_data(login_ID, login_PASS, target_year, target_month):
                 #page.wait_for_selector("text=期間")
                 page.get_by_label("次月を表示").click()
                 current_year, current_month = get_year_month(page)
-                print(current_year)
-                print(target_month)
-                print(current_month)
         elif int(target_month) < int(current_month):
             while(int(target_month) != int(current_month)):
                 #page.wait_for_selector("text=期間")
@@ -60,12 +54,10 @@ def get_shift_data(login_ID, login_PASS, target_year, target_month):
         #月の選択
         if int(target_month) > int(current_month):
             while(int(target_month) != int(current_month)):
-                #page.wait_for_selector("text=期間")
                 page.get_by_label("次月を表示").click()
                 current_year, current_month = get_year_month(page)
         elif int(target_month) < int(current_month):
             while(int(target_month) != int(current_month)):
-                #page.wait_for_selector("text=期間")
                 page.get_by_label("前月を表示").click()
                 current_year, current_month = get_year_month(page)
 
