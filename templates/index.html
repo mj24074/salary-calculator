@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<h2>給与計算</h2>
+<div id="form-area">
+<form id="form">
+    <input name="id" placeholder="ID">
+    <br>
+    <input type="password" name="password" placeholder="パスワード">
+    <br>
+    <input name="year" placeholder="例：2025">
+    <br>
+    <input name="month" placeholder="例：6">
+    <br>
+    <div id="error-message" class="error" style="color: red;"></div>
+    <button type="submit">計算</button> 
+</form>
+
+</div>
+<div class="loading-ring"></div>
+
+<div id="result-area" style="display:none;">
+    <div id="result"></div>
+    <button id="backBtn">戻る</button>
+</div>
+
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
