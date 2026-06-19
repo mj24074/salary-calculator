@@ -81,7 +81,6 @@ def get_shift_data(login_ID, login_PASS, target_year, target_month):
         
         #HTMLからデータの取り出し
         for cell in cells:
-            #print(cell)            #抜き出しデータ確認用
             if(i % 8 == 0):
                 list_day.append(cell)
             elif(i % 8 == 2):
